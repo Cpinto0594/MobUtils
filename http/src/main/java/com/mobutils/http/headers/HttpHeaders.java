@@ -103,4 +103,19 @@ public class HttpHeaders {
         }
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "HttpHeaders{" +
+                "pragma='" + pragma + '\'' +
+                ", server='" + server + '\'' +
+                ", connection='" + connection + '\'' +
+                ", cacheControl='" + cacheControl + '\'' +
+                ", expires='" + expires + '\'' +
+                ", contentLength=" + contentLength +
+                ", date='" + date + '\'' +
+                ", content_type='" + content_type + '\'' +
+                ", cookies=" + cookies +
+                '}';
+    }
 }

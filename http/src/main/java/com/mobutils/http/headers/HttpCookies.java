@@ -56,4 +56,14 @@ public class HttpCookies {
             this.httpOnly = httpOnly;
         }
 
+    @Override
+    public String toString() {
+        return "HttpCookies{" +
+                "key='" + key + '\'' +
+                ", value='" + value + '\'' +
+                ", path='" + path + '\'' +
+                ", expires='" + expires + '\'' +
+                ", httpOnly=" + httpOnly +
+                '}';
     }
+}
