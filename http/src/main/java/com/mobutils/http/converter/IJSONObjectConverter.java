@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface IJSONObjectConverter {
 
-    public <T> List<T> DeserializeArray(Class<T> clazz, String value);
+    public <T> List<T> DeserializeArray(Class<T> clazz, String value) throws RuntimeException;
 
-    public <T extends Object> T DeserializeObject(Class<T> resultclass, String value);
+    public <T extends Object> T DeserializeObject(Class<T> resultclass, String value)  throws RuntimeException;
 
-    public String SerializeObject(Object value);
+    public String SerializeObject(Object value)  throws RuntimeException;
 }
