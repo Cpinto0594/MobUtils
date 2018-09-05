@@ -374,7 +374,7 @@ public class HttpManager {
                     resultHeaders.setContentLength(Long.parseLong(((List<String>) entry.getValue()).get(0)));
                     break;
                 case "date":
-                    resultHeaders.setDate(new Date(((List<String>) entry.getValue()).get(0)));
+                    resultHeaders.setDate(((List<String>) entry.getValue()).get(0));
                     break;
                 case "content-type":
                     resultHeaders.setContent_type(entry.getValue().toString());

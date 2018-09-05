@@ -16,7 +16,7 @@ public class HttpHeaders {
     private String cacheControl;
     private String expires;
     private long contentLength;
-    private Date date;
+    private String date;
     private String content_type;
     private List<HttpCookies> cookies;
 
@@ -79,11 +79,11 @@ public class HttpHeaders {
         this.contentLength = contentLength;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
