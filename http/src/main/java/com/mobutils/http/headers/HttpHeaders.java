@@ -14,7 +14,7 @@ public class HttpHeaders {
     private String server;
     private String connection;
     private String cacheControl;
-    private Date expires;
+    private String expires;
     private long contentLength;
     private Date date;
     private String content_type;
@@ -63,11 +63,11 @@ public class HttpHeaders {
         this.cacheControl = cacheControl;
     }
 
-    public Date getExpires() {
+    public String getExpires() {
         return expires;
     }
 
-    public void setExpires(Date expires) {
+    public void setExpires(String expires) {
         this.expires = expires;
     }
 

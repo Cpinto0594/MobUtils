@@ -368,7 +368,7 @@ public class HttpManager {
                     resultHeaders.setCacheControl(entry.getValue().toString());
                     break;
                 case "expires":
-                    resultHeaders.setExpires(new Date(((List<String>) entry.getValue()).get(0)));
+                    resultHeaders.setExpires(((List<String>) entry.getValue()).get(0));
                     break;
                 case "content-length":
                     resultHeaders.setContentLength(Long.parseLong(((List<String>) entry.getValue()).get(0)));
