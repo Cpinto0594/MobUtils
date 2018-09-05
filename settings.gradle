@@ -1,1 +1,1 @@
-include ':app', ':http', ':async'
+include ':app', ':http', ':async', ':dialog'
