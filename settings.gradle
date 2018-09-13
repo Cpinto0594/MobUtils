@@ -1,1 +1,1 @@
-include ':http', ':async', ':dialog'
+include ':http', ':async', ':dialog', ':JHttp'
