@@ -1,6 +1,6 @@
 package com.javautils.jhttp.http.exception;
 
-import com.mobutils.http.request.HttpManagerUtils;
+import com.javautils.jhttp.http.request.HttpManagerUtils;
 
 import java.net.HttpURLConnection;
 
