@@ -294,7 +294,7 @@ public class HttpManager {
     }
 
     //Agregar header y value al array de headers para la peticion
-    public void setHeader(String key, String value) {
+    public HttpManager setHeader(String key, String value) {
         if (HttpManagerUtils.isEmpty(this.RequestHeaders)) this.RequestHeaders = new HashMap<>();
         if (key.toLowerCase().equals("cookie")) {
             String cookies = this.RequestHeaders.get(key);
@@ -304,6 +304,7 @@ public class HttpManager {
         this.RequestHeaders.put(key, value);
 
         Logger.getLogger(HttpManager.class.getSimpleName()).warning(TAG + "Agregando header: " + key + " valor:" + value);
+        return this;
     }
 
     //Iniciamos las variables iniciales de configuración
