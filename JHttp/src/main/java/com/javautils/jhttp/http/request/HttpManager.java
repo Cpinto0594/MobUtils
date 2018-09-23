@@ -7,6 +7,9 @@ import com.javautils.jhttp.http.headers.HttpCookies;
 import com.javautils.jhttp.http.headers.HttpHeaders;
 import com.javautils.jhttp.http.responses.HttpResponseStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -20,7 +23,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 
 /**
@@ -50,6 +52,9 @@ public class HttpManager {
     public static String TAG = "HTTPMANAG";
     private Class<?> responseClass = String.class;
     private boolean isArrayResponse;
+
+
+    private static Logger log = LoggerFactory.getLogger(HttpManager.class);
 
     public HttpManager() {
     }
@@ -162,10 +167,10 @@ public class HttpManager {
                 else
                     callback.onSuccess(resultObject, this.ResponseHeaders, this.responseCode);
             } catch (Exception e) {
-                Logger.getLogger(HttpManager.class.getSimpleName()).warning(TAG + e.getMessage());
+                log.debug(TAG + " -> " + e.getMessage());
             }
         }
-        Logger.getLogger(HttpManager.class.getSimpleName()).warning(TAG + "Finalizando petición;Disconnecting Connection");
+        log.debug(TAG + " -> " + "Finalizando petición;Disconnecting Connection");
         this.httpConnection.disconnect();
         return resultObject;
     }
@@ -181,7 +186,7 @@ public class HttpManager {
             this.httpConnection.setRequestMethod(method);
             this.httpConnection.setConnectTimeout(TIME_OUT);
             this.httpConnection.setDoInput(true);//Permitir recepcion de datos
-            Logger.getLogger(HttpManager.class.getSimpleName()).warning(TAG + "Response Detail: URL [ " + this.url + " ] Method [ " + method + " ]\n  timeout time [ "
+            log.debug(TAG + " -> " + "Response Detail: URL [ " + this.url + " ] Method [ " + method + " ]\n  timeout time [ "
                     + TIME_OUT + " ] responseType [ " + this.responseClass.getSimpleName() + " ]\n ");
 
 
@@ -207,7 +212,7 @@ public class HttpManager {
                     dos.flush();
                     dos.close();
 
-                    Logger.getLogger(HttpManager.class.getSimpleName()).warning(TAG + "Content-Type [ " +
+                    log.debug(TAG + " -> " + "Content-Type [ " +
                             this.httpConnection.getContentType() + " ].");
 
                 }
@@ -253,7 +258,7 @@ public class HttpManager {
                 response.setContentType(this.httpConnection.getContentType());
                 result = response;
 
-                Logger.getLogger(HttpManager.class.getSimpleName()).warning(TAG + "Tipo de dato a retornar: Stream");
+                log.debug(TAG + " -> " + "Tipo de dato a retornar: Stream");
 
             } else {
 
@@ -267,7 +272,7 @@ public class HttpManager {
 
                 if (this.bReader != null) {
                     serverMessage = HttpManagerUtils.frombufferReader(this.bReader);
-                    Logger.getLogger(HttpManager.class.getSimpleName()).warning(TAG + "Respuesta del servidor: " + serverMessage);
+                    log.debug(TAG + " -> " + "Respuesta del servidor: " + serverMessage);
                     //Si la peticion retornó error
                     if (!isSuccess) {
                         throw new HttpManagerInternalException(serverMessage);
@@ -280,10 +285,10 @@ public class HttpManager {
                         result = serverMessage;
                     } else if (this.isArrayResponse) {
                         result = HttpManagerConverterFactory.DeserializeArray(responseClass, serverMessage);
-                        Logger.getLogger(HttpManager.class.getSimpleName()).warning(TAG + "Tipo de dato a retornar: List<" + ((Class) responseClass).getName() + ">");
+                        log.debug(TAG + " -> " + "Tipo de dato a retornar: List<" + ((Class) responseClass).getName() + ">");
                     } else {
                         result = HttpManagerConverterFactory.DeserializeObject(responseClass, serverMessage);
-                        Logger.getLogger(HttpManager.class.getSimpleName()).warning(TAG + "Tipo de dato a retornar: " + ((Class) responseClass).getName());
+                        log.debug(TAG + " -> " + "Tipo de dato a retornar: " + ((Class) responseClass).getName());
                     }
                 }
             }
@@ -301,7 +306,7 @@ public class HttpManager {
         }
         this.RequestHeaders.put(key, value);
 
-        Logger.getLogger(HttpManager.class.getSimpleName()).info(TAG + "Agregando header: " + key + " valor:" + value);
+        log.debug(TAG + " -> " + "Agregando header: " + key + " valor:" + value);
         return this;
     }
 
@@ -432,7 +437,7 @@ public class HttpManager {
             _StaticRequestHeaders = new HashMap<>();
         }
         _StaticRequestHeaders.put(key, value);
-        Logger.getLogger(HttpManager.class.getSimpleName()).warning(TAG + "Agregando header: " + key);
+        log.debug(TAG + " -> " + "Agregando header: " + key);
     }
 
     public static void deleteRequestHeader(String key) {
@@ -441,7 +446,7 @@ public class HttpManager {
             return;
         }
         _StaticRequestHeaders.remove(key);
-        Logger.getLogger(HttpManager.class.getSimpleName()).warning(TAG + "Eliminando header: " + key);
+        log.debug(TAG + " -> " + "Eliminando header: " + key);
     }
 
     //Setters and Getters
