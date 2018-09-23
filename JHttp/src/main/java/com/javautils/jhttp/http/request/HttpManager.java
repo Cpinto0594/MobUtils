@@ -296,14 +296,12 @@ public class HttpManager {
     //Agregar header y value al array de headers para la peticion
     public HttpManager setHeader(String key, String value) {
         if (HttpManagerUtils.isEmpty(this.RequestHeaders)) this.RequestHeaders = new HashMap<>();
-        if (key.toLowerCase().equals("cookie")) {
-            String cookies = this.RequestHeaders.get(key);
-            cookies += ("," + value);
-            value = cookies;
+        if (this.RequestHeaders.get(key) != null) {
+            this.RequestHeaders.remove(key);
         }
         this.RequestHeaders.put(key, value);
 
-        Logger.getLogger(HttpManager.class.getSimpleName()).warning(TAG + "Agregando header: " + key + " valor:" + value);
+        Logger.getLogger(HttpManager.class.getSimpleName()).info(TAG + "Agregando header: " + key + " valor:" + value);
         return this;
     }
 
