@@ -54,7 +54,7 @@ public class HttpManager {
     private boolean isArrayResponse;
 
 
-    private static Logger log = LoggerFactory.getLogger(HttpManager.class);
+    private  Logger log = LoggerFactory.getLogger(HttpManager.class);
 
     public HttpManager() {
     }
@@ -437,7 +437,7 @@ public class HttpManager {
             _StaticRequestHeaders = new HashMap<>();
         }
         _StaticRequestHeaders.put(key, value);
-        log.debug(TAG + " -> " + "Agregando header: " + key);
+        LoggerFactory.getLogger(HttpManager.class).debug(TAG + " -> " + "Agregando header: " + key);
     }
 
     public static void deleteRequestHeader(String key) {
@@ -446,7 +446,7 @@ public class HttpManager {
             return;
         }
         _StaticRequestHeaders.remove(key);
-        log.debug(TAG + " -> " + "Eliminando header: " + key);
+        LoggerFactory.getLogger(HttpManager.class).debug(TAG + " -> " + "Eliminando header: " + key);
     }
 
     //Setters and Getters
