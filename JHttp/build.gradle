@@ -8,6 +8,10 @@ sourceCompatibility = "1.7"
 targetCompatibility = "1.7"
 
 dependencies {
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.+'
-    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.+'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+
+    // sfl4j is just a facade for loggers. To actually get logging to work, you need to
+    // tie it in with some actual implementation, e.g., logback
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.0.9'
+    compile group: 'ch.qos.logback', name: 'logback-core', version: '1.0.9'
 }
