@@ -111,7 +111,7 @@ public class HttpManager {
     }
 
     public HttpManager put(HttpResultListeners callback) {
-        service(this.DELETE, callback);
+        service(this.PUT, callback);
         return this;
     }
 
