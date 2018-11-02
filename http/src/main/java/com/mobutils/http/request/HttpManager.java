@@ -138,7 +138,7 @@ public class HttpManager {
     }
 
     //Encargado de gestionar la peticion http y  evaluar los callback methods
-    private Object service(String method, HttpResultListeners callback) {
+    private Object service(String method, HttpResultListeners callback) throws RuntimeException {
         Object resultObject = null;
         Exception exp = null;
         try {
@@ -169,6 +169,11 @@ public class HttpManager {
         }
         Log.d(TAG, "Finalizando petición;Disconnecting Connection");
         this.httpConnection.disconnect();
+
+        if (exp != null) {
+            Log.d(TAG, "Throwing Exception");
+            throw new RuntimeException(exp);
+        }
         return resultObject;
     }
 
