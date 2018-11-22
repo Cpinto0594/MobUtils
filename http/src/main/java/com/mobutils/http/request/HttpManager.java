@@ -213,10 +213,6 @@ public class HttpManager {
                     oStream.close();//Cerramos el stream
                     dos.flush();
                     dos.close();
-
-                    Log.d(this.TAG, "Content-Type [ " +
-                            this.httpConnection.getContentType() + " ].");
-
                 }
             }
             return convertResponseToResult();
@@ -248,10 +244,9 @@ public class HttpManager {
                 byte[] resultBytes = {};
 
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                int readed = inputStream.read();
-                while (readed != -1) {
+                int readed = 0;
+                while ((readed = inputStream.read(resultBytes)) != -1) {
                     baos.write(readed);
-                    readed = inputStream.read();
                 }
                 resultBytes = baos.toByteArray();
 
@@ -260,7 +255,7 @@ public class HttpManager {
                 response.setContentType(this.httpConnection.getContentType());
                 result = response;
 
-                Log.d(TAG, "Tipo de dato a retornar: Stream");
+//                Log.d(TAG, "Tipo de dato a retornar: Stream");
 
             } else {
 
@@ -274,9 +269,10 @@ public class HttpManager {
 
                 if (this.bReader != null) {
                     serverMessage = HttpManagerUtils.frombufferReader(this.bReader);
-                    Log.d(TAG, "Respuesta del servidor: " + serverMessage);
+//                    Log.d(TAG, "Respuesta del servidor: " + serverMessage);
                     //Si la peticion retornó error
                     if (!isSuccess) {
+                        Log.e(TAG, " -> " + "Not success answer from server");
                         throw new HttpManagerInternalException(serverMessage);
                     }
                 }
@@ -287,10 +283,10 @@ public class HttpManager {
                         result = serverMessage;
                     } else if (this.isArrayResponse) {
                         result = HttpManagerConverterFactory.DeserializeArray(responseClass, serverMessage);
-                        Log.d(TAG, "Tipo de dato a retornar: List<" + ((Class) responseClass).getName() + ">");
+//                        Log.d(TAG, "Tipo de dato a retornar: List<" + ((Class) responseClass).getName() + ">");
                     } else {
                         result = HttpManagerConverterFactory.DeserializeObject(responseClass, serverMessage);
-                        Log.d(TAG, "Tipo de dato a retornar: " + ((Class) responseClass).getName());
+//                        Log.d(TAG, "Tipo de dato a retornar: " + ((Class) responseClass).getName());
                     }
                 }
             }
@@ -310,7 +306,7 @@ public class HttpManager {
         }
         this.RequestHeaders.put(key, value);
 
-        Log.d(TAG, "Agregando header: " + key + " valor:" + value);
+//        Log.d(TAG, "Agregando header: " + key + " valor:" + value);
     }
 
     //Iniciamos las variables iniciales de configuración
@@ -440,7 +436,7 @@ public class HttpManager {
             _StaticRequestHeaders = new HashMap<>();
         }
         _StaticRequestHeaders.put(key, value);
-        Log.d(TAG, "Agregando header: " + key);
+//        Log.d(TAG, "Agregando header: " + key);
     }
 
     public static void deleteRequestHeader(String key) {
@@ -449,7 +445,7 @@ public class HttpManager {
             return;
         }
         _StaticRequestHeaders.remove(key);
-        Log.d(TAG, "Eliminando header: " + key);
+//        Log.d(TAG, "Eliminando header: " + key);
     }
 
     //Setters and Getters
