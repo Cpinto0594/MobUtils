@@ -47,11 +47,11 @@ public class HttpManager {
     private HttpHeaders ResponseHeaders;
     private Object params;
     private int responseCode = 0;
-    private String responseMessage = "";
     public static int TIME_OUT = 2000;
     public static String TAG = "HTTPMANAG";
     private Class<?> responseClass = String.class;
     private boolean isArrayResponse;
+    private final String defaultContentType = "application/x-www-form-urlencoded; charset=UTF-8";
 
     public HttpManager() {
     }
@@ -104,7 +104,7 @@ public class HttpManager {
         return this;
     }
 
-    //PUR Method
+    //PUT Method
     public HttpManager put() {
         service(this.PUT, null);
         return this;
@@ -134,6 +134,11 @@ public class HttpManager {
 
     public HttpManager setTimeOutTime(int value) {
         TIME_OUT = value;
+        return this;
+    }
+
+    public HttpManager setProtocol(String protocol) {
+        HttpManager.protocol = protocol;
         return this;
     }
 
@@ -191,6 +196,7 @@ public class HttpManager {
             Log.d(this.TAG, "Response Detail: URL [ " + this.url + " ] Method [ " + method + " ]\n  timeout time [ "
                     + TIME_OUT + " ] responseType [ " + this.responseClass.getSimpleName() + " ]\n ");
 
+            this.httpConnection.setRequestProperty("Content-Type", this.defaultContentType);
 
             //Agregamos los headers a la petición
             fillRequestWithHeaders();
@@ -228,7 +234,6 @@ public class HttpManager {
 
         try {
             this.responseCode = this.httpConnection.getResponseCode();
-            this.responseMessage = this.httpConnection.getResponseMessage();
             boolean isSuccess = HttpURLConnection.HTTP_OK <= this.responseCode
                     && this.responseCode <= 299;
 
