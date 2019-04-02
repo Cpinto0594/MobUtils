@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../JHttp/JHttp.iml" filepath="$PROJECT_DIR$/../JHttp/JHttp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../MobUtils.iml" filepath="$PROJECT_DIR$/../MobUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/accordeon.iml" filepath="$PROJECT_DIR$/accordeon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../async/async.iml" filepath="$PROJECT_DIR$/../async/async.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../dialog/dialog.iml" filepath="$PROJECT_DIR$/../dialog/dialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../http/http.iml" filepath="$PROJECT_DIR$/../http/http.iml" />
+    </modules>
+  </component>
+</project>

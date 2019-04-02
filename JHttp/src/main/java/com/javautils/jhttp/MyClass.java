@@ -12,18 +12,20 @@ public class MyClass {
 
     public static void main(String args[]) {
 
-        HttpManager http = new HttpManager("https://fcm.googleapis.com/fcm/send");
-        http.setHeader("Key", "AAAAX5X1pWM:APA91bEKHA3OftIiUT8uLjb4QdOoCMzAWyvJ-stezuDb23xW8jsg1OMiAmXSHp7kawp2iGvHeFOOUAxbTOdsI5ybBTrEUY0KlZEpAPlv27qnAkBT3Lod2kLQeu24lLBHCcVTMucNVemK");
-        Map data = new HashMap();
-        data.put("to", "c3-js4hvtIY:APA91bH4CxN3ULS3tpXZ9gotE4vUa2rjZYxIRJmI1nX4DuroAM9HDXlHcQVHYbibMSJ7eyWCOCWaHEkvWeJDHzQtS-Fv7vmY5ipYJVG5Dbb8EWZVnoXiM1TWnsjA-Q4b0KNq_MwIRjFH");
-        data.put("data", HttpManagerConverterFactory.DeserializeObject(NotificationData.class, "{\"message_data\":{\"subjects\":[{\"subject\":\"ELECTIVA PROFESIONAL IV\",\"grade\":\"\\n Primer Parcial: 4.10\"}],\"user\":\"cpinto6\"},\"message_date\":1537690504699,\"message_func\":\"NOTA_UPDATE\"}"));
-        http.setParams(data);
-        http.post(new HttpAbstractResult() {
-            @Override
-            public void onSuccess(Object resultValue, HttpHeaders responseHeaders, int responseCode) {
-                System.out.println("Result " + resultValue.toString());
-            }
-        });
+//        HttpManager http = new HttpManager("https://fcm.googleapis.com/fcm/send");
+//        http.setHeader("Key", "AAAAX5X1pWM:APA91bEKHA3OftIiUT8uLjb4QdOoCMzAWyvJ-stezuDb23xW8jsg1OMiAmXSHp7kawp2iGvHeFOOUAxbTOdsI5ybBTrEUY0KlZEpAPlv27qnAkBT3Lod2kLQeu24lLBHCcVTMucNVemK");
+//        Map data = new HashMap();
+//        data.put("to", "c3-js4hvtIY:APA91bH4CxN3ULS3tpXZ9gotE4vUa2rjZYxIRJmI1nX4DuroAM9HDXlHcQVHYbibMSJ7eyWCOCWaHEkvWeJDHzQtS-Fv7vmY5ipYJVG5Dbb8EWZVnoXiM1TWnsjA-Q4b0KNq_MwIRjFH");
+//        data.put("data", HttpManagerConverterFactory.DeserializeObject(NotificationData.class, "{\"message_data\":{\"subjects\":[{\"subject\":\"ELECTIVA PROFESIONAL IV\",\"grade\":\"\\n Primer Parcial: 4.10\"}],\"user\":\"cpinto6\"},\"message_date\":1537690504699,\"message_func\":\"NOTA_UPDATE\"}"));
+//        http.setParams(data);
+//        http.post(new HttpAbstractResult() {
+//            @Override
+//            public void onSuccess(Object resultValue, HttpHeaders responseHeaders, int responseCode) {
+//                System.out.println("Result " + resultValue.toString());
+//            }
+//        });
+
+
     }
 
     public static class NotificationData {

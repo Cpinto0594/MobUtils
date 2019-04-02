@@ -7,12 +7,12 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
+            <option value="$PROJECT_DIR$/.." />
+            <option value="$PROJECT_DIR$/../JHttp" />
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/JHttp" />
-            <option value="$PROJECT_DIR$/accordeon" />
-            <option value="$PROJECT_DIR$/async" />
-            <option value="$PROJECT_DIR$/dialog" />
-            <option value="$PROJECT_DIR$/http" />
+            <option value="$PROJECT_DIR$/../async" />
+            <option value="$PROJECT_DIR$/../dialog" />
+            <option value="$PROJECT_DIR$/../http" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

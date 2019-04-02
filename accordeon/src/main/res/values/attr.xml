@@ -1,0 +1,7 @@
+<resources>
+    <declare-styleable name="IziAccordeonActivity">
+        <attr name="headerTitle" format="string" />
+        <attr name="headerTitleColor" format="color" />
+        <attr name="headerTitleStyle" format="enum" />
+    </declare-styleable>
+</resources>
